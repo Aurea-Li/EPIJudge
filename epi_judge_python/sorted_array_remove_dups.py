@@ -3,11 +3,25 @@ import functools
 from test_framework import generic_test
 from test_framework.test_utils import enable_executor_hook
 
-
 # Returns the number of valid entries after deletion.
 def delete_duplicates(A):
-    # TODO - you fill in here.
-    return 0
+
+    swap = len(A)+1
+
+    if len(A) < 2:
+        return len(A)
+
+    for i in range(1, len(A)):
+        if swap == len(A)+1:
+            if A[i-1] == A[i]:
+                swap = i
+        else:
+            if A[(swap)-1] != A[i]:
+                A[swap], A[i] = A[i], A[swap]
+
+                swap += 1
+
+    return len(A[:swap])
 
 
 @enable_executor_hook
