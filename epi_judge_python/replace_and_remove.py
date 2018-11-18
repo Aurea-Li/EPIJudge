@@ -20,9 +20,6 @@ def replace_and_remove(size, s):
         if s[i] == 'b':
             final_size -= 1
 
-
-
-
     array_pt = final_size - 1
     for i in reversed(range(next_char)):
         if s[i] == 'a':
