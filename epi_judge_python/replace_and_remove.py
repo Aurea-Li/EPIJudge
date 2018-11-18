@@ -10,16 +10,17 @@ def replace_and_remove(size, s):
 
     for i in range(size):
 
+        if s[i] != b:
+            s[next_char] = s[i]
+            next_char += 1
+
+        if s[i] == 'a':
+            final_size += 1
 
         if s[i] == 'b':
             final_size -= 1
-        elif s[i] == 'a':
-            final_size += 1
-            s[next_char] = s[i]
-            next_char += 1
-        else:
-            s[next_char] = s[i]
-            next_char += 1
+
+
 
 
     array_pt = final_size - 1
