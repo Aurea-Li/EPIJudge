@@ -1,9 +1,18 @@
 from test_framework import generic_test
 
 
+def convert_to_int(c):
+    return ord(c) - 64
+
 def ss_decode_col_id(col):
-    # TODO - you fill in here.
-    return 0
+
+    sum, power = 0, len(col)-1
+    for c in col:
+        sum += convert_to_int(c) * 26 ** power
+        power -= 1
+
+    return sum
+
 
 
 if __name__ == '__main__':
