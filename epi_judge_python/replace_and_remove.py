@@ -5,21 +5,39 @@ from test_framework.test_utils import enable_executor_hook
 
 def replace_and_remove(size, s):
 
-    i = 0
-    while i < size:
 
-        if s[i] == 'a':
-            s[i] = 'd'
-            s.insert(i, 'd')
-            i +=  2
-            size += 1
-        elif s[i] == 'b':
-            s.pop(i)
-            size -= 1
+    i, next_char, final_size = 0, 0, size
+
+    for i in range(size):
+
+
+        if s[i] == 'b':
+            final_size -= 1
+        elif s[i] == 'a':
+            final_size += 1
+            s[next_char] = s[i]
+            next_char += 1
         else:
-            i += 1
+            s[next_char] = s[i]
+            next_char += 1
 
-    return size
+
+    array_pt = final_size - 1
+    for i in reversed(range(next_char)):
+        if s[i] == 'a':
+            s[array_pt] = 'd'
+            s[array_pt - 1] = 'd'
+            array_pt -= 2
+        else:
+            s[array_pt] = s[i]
+            array_pt -= 1
+
+    return final_size
+
+
+
+
+
 
 
 
